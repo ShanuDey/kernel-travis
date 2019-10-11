@@ -11,8 +11,8 @@ before_script:
 script:
   - cd $HOME && git clone https://github.com/raza231198/kernel_realme_sdm660.git kernel
   - cd $HOME/kernel && git remote rm origin
-  - git remote add origin https://github.com/iamsaalim/kernel_realme_sdm660.git && git checkout -b stock
-  - git push -q https://$GITHUB_TOKEN@github.com/iamsaalim/kernel_realme_sdm660.git HEAD:stock
+  - git remote add origin https://github.com/iamsaalim/kernel_realme_sdm660.git
+  - git push -q https://$GITHUB_TOKEN@github.com/iamsaalim/kernel_realme_sdm660.git HEAD:master
 deploy:
   skip_cleanup: true
   provider: releases

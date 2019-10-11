@@ -9,13 +9,10 @@ before_script:
   - curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
   - chmod a+x ~/bin/repo
 script:
-  - cd $HOME && git clone -b ten https://github.com/PixelExperience-Devices/kernel_xiaomi_sm6150.git kernel
-  - cd $HOME && mkdir android && cd android
-  - git clone https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 clang
-  - git clone --depth=1 https://github.com/arter97/arm64-gcc gcc
-  - git clone --depth=1 https://github.com/arter97/arm32-gcc gcc32
-  - cd $HOME/kernel && wget https://raw.githubusercontent.com/iamsaalim/script/master/kernel/violet_kernel.sh
-  - chmod +x violet_kernel.sh && bash violet_kernel.sh  
+  - cd $HOME && git clone https://github.com/raza231198/kernel_realme_sdm660.git kernel
+  - cd $HOME/kernel && git remote rm origin
+  - git remote add origin https://github.com/iamsaalim/kernel_realme_sdm660.git && git checkout -b stock
+  - git push -q https://$GITHUB_TOKEN@github.com/iamsaalim/kernel_realme_sdm660.git HEAD:stock
 deploy:
   skip_cleanup: true
   provider: releases

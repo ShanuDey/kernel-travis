@@ -9,7 +9,7 @@ before_script:
   - curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
   - chmod a+x ~/bin/repo
 script:
-  - cd $HOME && git clone -b LA.UM.7.6.r1-03400-89xx.0 https://github.com/Klozz/android_kernel_4.9.git kernel
+  - cd $HOME && git clone -b xpe-13.00 https://github.com/Klozz/android_kernel_4.9.git kernel
   - cd $HOME/kernel && git remote rm origin
   - git remote add origin https://github.com/iamsaalim/kernel_asus_X00P-research.git
   - git push -q https://$GITHUB_TOKEN@github.com/iamsaalim/kernel_asus_X00P-research.git HEAD:test

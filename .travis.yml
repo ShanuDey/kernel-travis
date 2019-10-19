@@ -9,8 +9,8 @@ before_script:
   - curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
   - chmod a+x ~/bin/repo
 script:
-  - cd $HOME && git clone https://github.com/archie9211/android_kernel_realme_RMX1801.git kernel
-  - cd $HOME/kernel && git remote rm origin
+  - cd $HOME && git clone https://github.com/rama982/android_kernel_xiaomi_vince-4.9 kernel
+  - cd $HOME/kernel && git reset --hard b3d2042b1614d78c1107fab6ff5d34aac72a0439 && git remote rm origin
   - git remote add origin https://github.com/iamsaalim/kernel_asus_X00P-research.git
-  - git push -q https://$GITHUB_TOKEN@github.com/iamsaalim/kernel_realme_sdm660.git HEAD:pie
+  - git push -q https://$GITHUB_TOKEN@github.com/iamsaalim/kernel_asus_X00P-research.git HEAD:test
 

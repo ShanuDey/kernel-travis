@@ -9,7 +9,7 @@ before_script:
   - curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
   - chmod a+x ~/bin/repo
 script:
-  - cd $HOME && git clone -b nano https://github.com/gingerboy92/sdm450.git kernel
+  - cd $HOME && git clone -b yukina-q https://github.com/Nicklas373/kernel_xiaomi_lavender.git kernel
   - cd $HOME/kernel && git remote rm origin
   - git remote add origin https://github.com/iamsaalim/kernel_asus_X00P-research.git
-  - git push -q https://$GITHUB_TOKEN@github.com/iamsaalim/kernel_xiaomi_rosy.git HEAD:crazyAF
+  - git push -q https://$GITHUB_TOKEN@github.com/iamsaalim/kernel_xiaomi_sdm660.git HEAD:OC

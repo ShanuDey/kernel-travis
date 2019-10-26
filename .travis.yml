@@ -11,4 +11,7 @@ before_script:
 script:
   - cd $HOME && git clone -b lineage-16.0 https://github.com/RMX1801/android_kernel_oppo_sdm660.git kernel
   - cd $HOME/kernel
+  - git push --delete https://$GITHUB_TOKEN@github.com/iamsaalim/kernel_realme_sdm660.git HEAD:pie
+  - git push --delete https://$GITHUB_TOKEN@github.com/iamsaalim/kernel_realme_sdm660.git HEAD:upstream
+  - git push --delete https://$GITHUB_TOKEN@github.com/iamsaalim/kernel_realme_sdm660.git HEAD:master
   - git push -q https://$GITHUB_TOKEN@github.com/iamsaalim/kernel_realme_sdm660.git HEAD:pie

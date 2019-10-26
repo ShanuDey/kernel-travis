@@ -13,7 +13,7 @@ get_ipython().system_raw('/usr/sbin/sshd -D &')
 
 #Ask token
 print("Copy authtoken from https://dashboard.ngrok.com/auth")
-authtoken="YOUR_TOKEN_HERE"
+authtoken="1Sj95YvCa500DveZBnR8d29oOUu_44NHBH2kG1QWMChGQ4LEY"
 ! git config --global user.email "your@email"
 ! git config --global user.name "Your Name"
 

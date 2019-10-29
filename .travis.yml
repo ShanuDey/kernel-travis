@@ -9,9 +9,6 @@ before_script:
   - curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
   - chmod a+x ~/bin/repo
 script:
-  - cd $HOME && git clone -b darky-3.18 https://github.com/iamsaalim/android_kernel_dark_ages kernel
-  - cd $HOME/kernel
-  - git push -q https://$GITHUB_TOKEN@github.com/iamsaalim/kernel_xiaomi_vince HEAD:3.18
   - cd $HOME && git clone -b pie https://github.com/iamsaalim/android_kernel_xiaomi_vince-4.9 vince
   - cd $HOME/vince
   - git push -q https://$GITHUB_TOKEN@github.com/iamsaalim/kernel_xiaomi_vince.git HEAD:4.9

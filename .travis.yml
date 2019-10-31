@@ -9,6 +9,6 @@ before_script:
   - curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
   - chmod a+x ~/bin/repo
 script:
-  - cd $HOME && git clone -b pie https://github.com/iamsaalim/android_kernel_xiaomi_vince-4.9 vince
-  - cd $HOME/vince
-  - git push -q https://$GITHUB_TOKEN@github.com/iamsaalim/kernel_xiaomi_vince.git HEAD:4.9
+  - cd $HOME && git clone -b test https://github.com/iamsaalim/kernel_xiaomi_sdm660.git kernel
+  - cd $HOME/kernel 
+  - git push -q https://$GITHUB_TOKEN@github.com/AtomOS-devices/kernel_xiaomi_lavender.git HEAD:test

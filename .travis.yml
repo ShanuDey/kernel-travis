@@ -9,6 +9,6 @@ before_script:
   - curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
   - chmod a+x ~/bin/repo
 script:
-  - cd $HOME && git clone -b ten https://github.com/iamsaalim/kernel_xiaomi_whyred.git kernel
+  - cd $HOME && git clone -b aosp https://github.com/iamsaalim/kernel_asus_X00P.git kernel
   - cd $HOME/kernel 
-  - git push -q https://$GITHUB_TOKEN@github.com/stormbreaker-project/kernel_xiaomi_whyred HEAD:ten
+  - git push -q https://$GITHUB_TOKEN@github.com/stormbreaker-project/kernel_asus_X00P HEAD:aosp

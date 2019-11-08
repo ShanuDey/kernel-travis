@@ -9,6 +9,6 @@ before_script:
   - curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
   - chmod a+x ~/bin/repo
 script:
-  - cd $HOME && git clone -b jasmine-p-oss https://github.com/android-linux-stable/jasmine.git kernel
+  - cd $HOME && git clone -b ten https://github.com/iamsaalim/kernel_realme_sdm660 kernel
   - cd $HOME/kernel 
-  - git push -q https://$GITHUB_TOKEN@github.com/stormbreaker-project/kernel_xiaomi_jasmine HEAD:pie
+  - git push -q https://$GITHUB_TOKEN@github.com/stormbreaker-project/kernel_realme_sdm660 HEAD:pie

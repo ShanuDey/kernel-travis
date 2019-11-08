@@ -9,6 +9,6 @@ before_script:
   - curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
   - chmod a+x ~/bin/repo
 script:
-  - cd $HOME && git clone -b test https://github.com/iamsaalim/kernel_xiaomi_sdm660 kernel
+  - cd $HOME && git clone -b staging/lineage-16.0 https://github.com/RMX1801/android_kernel_oppo_sdm660/ kernel
   - cd $HOME/kernel 
-  - git push -q https://$GITHUB_TOKEN@github.com/stormbreaker-project/kernel_xiaomi_lavender HEAD:ten
+  - git push -q https://$GITHUB_TOKEN@github.com/iamsaalim/kernel_realme_sdm660 HEAD:ten

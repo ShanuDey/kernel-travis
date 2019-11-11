@@ -1,0 +1,85 @@
+commit 515214699fdbd792332eb66937f6a2a370f7e177
+Author: Kshitij Gupta <kshitijgm@gmail.com>
+Date:   Sat Nov 9 06:22:19 2019 +0000
+
+    mt6785: Don't gitignore firmware files and fix build
+    
+    Signed-off-by: Kshitij Gupta <kshitijgm@gmail.com>
+
+diff --git a/.gitignore b/.gitignore
+index be92dfa89957..a9fa9e3e3576 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -20,7 +20,6 @@
+ *.elf
+ *.gcno
+ *.gz
+-*.i
+ *.ko
+ *.ll
+ *.lst
+diff --git a/Makefile b/Makefile
+index 8edd7994d3f1..6a21d89bd674 100644
+--- a/Makefile
++++ b/Makefile
+@@ -420,7 +420,7 @@ KBUILD_AFLAGS   := -D__ASSEMBLY__
+ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
+ 		   -fno-strict-aliasing -fno-common -fshort-wchar \
+ 		   -Werror-implicit-function-declaration \
+-		   -Werror -Wno-format-security \
++		   -Werror -Wno-format-security -Wno-error=format \
+ 		   -std=gnu89
+ KBUILD_CPPFLAGS := -D__KERNEL__
+ KBUILD_AFLAGS_KERNEL :=
+diff --git a/arch/arm64/boot/dts/mediatek/k85v1_64.dts b/arch/arm64/boot/dts/mediatek/k85v1_64.dts
+index 4f7fea3245af..79a78a6179a3 100644
+--- a/arch/arm64/boot/dts/mediatek/k85v1_64.dts
++++ b/arch/arm64/boot/dts/mediatek/k85v1_64.dts
+@@ -571,5 +571,4 @@
+ 	};
+ }; /* IRTX GPIO Settings -End */
+ 
+-#include <k85v1_64/cust.dtsi>
+ /*End of this file, DO NOT ADD ANYTHING HERE*/
+diff --git a/arch/arm64/boot/dts/mediatek/xiaomi-mt6785-common.dtsi b/arch/arm64/boot/dts/mediatek/xiaomi-mt6785-common.dtsi
+index 4a1cd2049e7c..07dbc78bc2a1 100644
+--- a/arch/arm64/boot/dts/mediatek/xiaomi-mt6785-common.dtsi
++++ b/arch/arm64/boot/dts/mediatek/xiaomi-mt6785-common.dtsi
+@@ -700,5 +700,4 @@
+ 	};
+ }; /* IRTX GPIO Settings -End */
+ 
+-#include <k85v1_64/cust.dtsi>
+ /*End of this file, DO NOT ADD ANYTHING HERE*/
+diff --git a/drivers/input/touchscreen/fts8719/include/firmware/focal_g7_01.i b/drivers/input/touchscreen/fts8719/include/firmware/focal_g7_01.i
+new file mode 100644
+index 000000000000..e69de29bb2d1
+diff --git a/drivers/input/touchscreen/fts8719/include/firmware/fw_sample.i b/drivers/input/touchscreen/fts8719/include/firmware/fw_sample.i
+new file mode 100644
+index 000000000000..e69de29bb2d1
+diff --git a/drivers/misc/mediatek/thermal/common/coolers/mtk_cooler_gpu_cus.c b/drivers/misc/mediatek/thermal/common/coolers/mtk_cooler_gpu_cus.c
+index 7c661f98b747..a318994e486c 100644
+--- a/drivers/misc/mediatek/thermal/common/coolers/mtk_cooler_gpu_cus.c
++++ b/drivers/misc/mediatek/thermal/common/coolers/mtk_cooler_gpu_cus.c
+@@ -68,7 +68,7 @@ static int mtk_cl_gpu_set_cur_state
+ 			mtk_gpu_power[g_gpu_level + gpu_max_opp].gpufreq_power);
+ 	} else {
+ 		mtk_cooler_gpu_dprintk("%s: mtk_gpu_power_table=%p, state=%d, GPU_OPP=%d\n",
+-			__func__, mtk_gpu_power, state, Num_of_GPU_OPP - gpu_max_opp);
++			__func__, mtk_gpu_power, state, (int) (Num_of_GPU_OPP - gpu_max_opp));
+ 	}
+ 
+ 	return 0;
+diff --git a/drivers/misc/mediatek/thermal/mtk_cooler_flashlight_cus.c b/drivers/misc/mediatek/thermal/mtk_cooler_flashlight_cus.c
+index 12961adabd6b..63275cc6910b 100644
+--- a/drivers/misc/mediatek/thermal/mtk_cooler_flashlight_cus.c
++++ b/drivers/misc/mediatek/thermal/mtk_cooler_flashlight_cus.c
+@@ -59,7 +59,7 @@ static int mtk_cl_flashlight_set_cur_state
+ 	if (state < g_max_flashlight_level) {
+ 		flashlight_set_cooler_level(state);
+ 		g_flashlight_level = state;
+-		mtk_cooler_flashlight_dprintk("%s: %d\n", g_flashlight_level);
++		mtk_cooler_flashlight_dprintk("%s: %d\n", "spaghet", g_flashlight_level);
+ 	}
+ 
+ 	return 0;

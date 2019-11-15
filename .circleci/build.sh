@@ -51,7 +51,7 @@ function finerr() {
 }
 # Compile plox
 function compile() {
-   make O=out ARCH=arm64 lavender-perf_defconfig
+   make O=out ARCH=arm64 violet-perf_defconfig
        make -j$(nproc --all) O=out \
                              ARCH=arm64 \
 			     CROSS_COMPILE=aarch64-linux-android- \

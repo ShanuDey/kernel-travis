@@ -5,7 +5,7 @@ cd kernel
 git clone --depth=1 https://github.com/Haseo97/Clang-10.0.0 clang
 git clone --depth=1 https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 -b android-9.0.0_r39 stock
 git clone --depth=1 https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 -b android-9.0.0_r39 stock_32
-git clone --depth=1 https://github.com/Yasir-siddiqui/AnyKernel3 -b lavender AnyKernel
+git clone --depth=1 https://github.com/iamsaalim/AnyKernel3 -b lav AnyKernel
 echo "Done"
 GCC="$(pwd)/aarch64-linux-android-"
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb

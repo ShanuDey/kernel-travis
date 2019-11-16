@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 echo "Cloning dependencies"
-git clone --depth=1 https://github.com/uditkarode/crimson kernel
+git clone --depth=1 -b master https://github.com/stormbreaker-project/kernel_xiaomi_lavender.git kernel
 cd kernel
 git clone --depth=1 https://github.com/Haseo97/Clang-10.0.0 clang
 git clone --depth=1 https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 -b android-9.0.0_r39 stock
@@ -11,24 +11,18 @@ GCC="$(pwd)/aarch64-linux-android-"
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
 TANGGAL=$(date +"%F-%S")
 START=$(date +"%s")
-export CONFIG_PATH=$PWD/arch/arm64/configs/vendor/violet-perf_defconfig
+export CONFIG_PATH=$PWD/arch/arm64/configs/lavender-perf_defconfig
 PATH="${PWD}/clang/bin:${PWD}/stock/bin:${PWD}/stock_32/bin:${PATH}"
 export ARCH=arm64
 export KBUILD_BUILD_HOST=stormbreaker
 export KBUILD_BUILD_USER="root"
-# sticker 
-function sticker() {
-    curl -s -X POST "https://api.telegram.org/bot$token/sendSticker" \
-        -d sticker="CAADBQADVAADaEQ4KS3kDsr-OWAUFgQ" \
-        -d chat_id=$chat_id
-}
 # Send info plox channel
 function sendinfo() {
     curl -s -X POST "https://api.telegram.org/bot$token/sendMessage" \
         -d chat_id="$chat_id" \
         -d "disable_web_page_preview=true" \
         -d "parse_mode=html" \
-        -d text="<b>• kernel •</b>%0ABuild started on <code>Circle CI/CD</code>%0AFor device <b>Xiaomi Redmi note7/7s</b> (lavender)%0Abranch <code>$(git rev-parse --abbrev-ref HEAD)</code>(master)%0AUnder commit <code>$(git log --pretty=format:'"%h : %s"' -1)</code>%0AUsing compiler: <code>$(${GCC}gcc --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g')</code>%0AStarted on <code>$(date)</code>%0A<b>Build Status:</b> #Test"
+        -d text="<b>• kernel •</b>%0ABuild started on <code>travis CI/CD</code>%0AFor device <b>Xiaomi Redmi note7/7s</b> (lavender)%0Abranch <code>$(git rev-parse --abbrev-ref HEAD)</code>(master)%0AUnder commit <code>$(git log --pretty=format:'"%h : %s"' -1)</code>%0AUsing compiler: <code>$(${GCC}gcc --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g')</code>%0AStarted on <code>$(date)</code>%0A<b>Build Status:</b> #Test"
 }
 # Push kernel to channel
 function push() {
@@ -51,7 +45,7 @@ function finerr() {
 }
 # Compile plox
 function compile() {
-   make O=out ARCH=arm64 violet-perf_defconfig
+   make O=out ARCH=arm64 lavender-perf_defconfig
        make -j$(nproc --all) O=out \
                              ARCH=arm64 \
 			     CROSS_COMPILE=aarch64-linux-android- \
